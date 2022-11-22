@@ -1,23 +1,22 @@
 #include "main.h"
 
 /**
- * _printf - prints an output according to a format
- * @format: contains the formatted output to print
+ * _printf - a function that produces output according to a format and argument
+ * @format: string containing the regular chars and format specifiers to print
  *
- * Return: total number of characters printed
+ * Return: the total number of characters printed
  */
 int _printf(const char *format, ...)
 {
+	/* Declare a variable list, with its own argument(begins at va_start) */
 	va_list list;
-	int i = 0, int count = 0;
-	/* a function pointer, that accepts va_list as argument to collect */
-	/* format specifier functions and call them */
+	int i = 0, count = 0;
+	/* a function pointer, that accepts va_list as argument */
 	int (*ptr_func)(va_list);
 
 	/* Returns -1 if format is null */
 	if (!format || (format[i] == '%' && format[i + 1] == '\0'))
 		return (-1);
-	/* returns 0 if format is an empty string */
 	if (!format[i])
 		return (0);
 
@@ -28,7 +27,7 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == '\0')
 				return (-1);
-			/* collect the function that handles a specifier */
+
 			ptr_func = get_func(format, i + 1);
 			if (ptr_func == NULL)
 			{

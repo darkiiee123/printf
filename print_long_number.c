@@ -68,6 +68,7 @@ int print_short_number(va_list args)
 		div *= 10;
 		temp /= 10;
 	}
+
 	for (i = 0; div > 0; div /= 10, i++, count++)
 	{
 		_putchar(((num_t / div) % 10) + '0');
